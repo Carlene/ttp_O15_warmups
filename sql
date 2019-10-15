@@ -39,13 +39,18 @@ OFFSET 10;
 --How many films are as long as the longest film?
 -- RETURN an exact number
 
+SELECT 
+	COUNT(title)
 
-SELECT
-	title
-	,MAX(length) as longest
-
-FROM
+FROM 
 	film
+
+WHERE
+	length =(SELECT
+				MAX(length) as longest
+
+			FROM
+				film)
 
 --Which are the 10 longest R rated movies, SORTED IN ALPHABETICAL ORDER?
 -- hint: might need a subquery
