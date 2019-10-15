@@ -76,22 +76,25 @@ ORDER BY
 -- G, PG, PG-13
 --hint: google "SQL count length of string"
 
+
 SELECT
 	title
-	,description
+	,LENGTH(description)
 
 FROM
 	film
 
 WHERE
-	rating IN ('G', 'PG', 'PG-13')
+	rating IN ('G', 'PG', 'PG-13')	
 
-	LENGTH(description) = 
-		(SELECT
-			MAX(LENGTH(description))
+GROUP BY
+	title
+	,description
 
-		FROM
-			film)
+ORDER BY
+	LENGTH(description) DESC
+
+LIMIT 10;
 
 -- How many unique release_years are there in the dvd rental database?
 -- Return an exact number
@@ -100,8 +103,11 @@ SELECT
 	release_year
 	,COUNT(release_year)
 
-FROM 
+FROM
 	film
 
+WHERE
+
+		
 GROUP BY
 	release_year
