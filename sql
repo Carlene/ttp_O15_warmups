@@ -99,15 +99,17 @@ LIMIT 10;
 -- How many unique release_years are there in the dvd rental database?
 -- Return an exact number
 
+-- There are 0 unique release years
+
 SELECT 
 	release_year
 	,COUNT(release_year)
 
 FROM
 	film
-
-WHERE
-
 		
 GROUP BY
 	release_year
+
+HAVING
+	COUNT(release_year) = 1
